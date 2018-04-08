@@ -14,7 +14,7 @@ class IndexView(FormView):
 
     def get_success_url(self):
         form = self.get_form()
-        rfid = form.cleaned_data['rfid']
+        rfid = form.data['rfid']
 
         if is_wetsuit_rfid(rfid):
             return '/return/'
