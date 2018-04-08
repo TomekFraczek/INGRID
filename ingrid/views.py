@@ -16,12 +16,14 @@ class IndexView(FormView):
         form = self.get_form()
         rfid = form.data['rfid']
 
+
+        # TODO: make these URL's not be hardcoded
         if is_wetsuit_rfid(rfid):
-            return '/return/'
+            return 'ingrid/return/'
         elif is_member_rfid(rfid):
-            return '/checkout/'
+            return 'ingrid/checkout/'
         else:
-            return ''
+            return 'ingrid/'
 
 
 class WetsuitListView(ListView):
