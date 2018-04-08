@@ -8,13 +8,3 @@
         {{ form.as_p }}
     </form>
 </body>
-
-<script type="text/javascript">
-    var alwaysFocusedInput = document.forms[0].elements[0];
-
-    alwaysFocusedInput.addEventListener( "blur", function() {
-      setTimeout(() =>{
-        alwaysFocusedInput.focus();
-      }, 0);
-    });
-</script>
