@@ -18,11 +18,15 @@ class Wetsuit(models.Model):
     def __str__(self):
         return "{} {} wetsuit".format(self.size, self.gender)
 
+    @property
+    def description(self):
+        return str(self)
+
 
 class Locker(models.Model):
 
     locker_id = models.CharField(primary_key=True, max_length=5)
-    wetsuit = models.ForeignKey(to=Wetsuit, on_delete=models.CASCADE)
+    wetsuit = models.OneToOneField(to=Wetsuit, on_delete=models.CASCADE)
     has_suit = models.BooleanField(default=True)
 
 
