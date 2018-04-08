@@ -1,0 +1,18 @@
+<script type="text/javascript">
+    var alwaysFocusedInput = document.getElementById( "{{ form.rfid.auto_id }}" );
+
+    alwaysFocusedInput.addEventListener( "blur", function() {
+      setTimeout(() =>{
+        alwaysFocusedInput.focus();
+      }, 0);
+    });
+</script>
+
+<p>To rent a wetsuit, scan your member tag</p>
+<p>To return a wetsuit, scan the wetsuit's RFID tag</p>
+
+{{ form.rfid.auto_id }}
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+</form>
