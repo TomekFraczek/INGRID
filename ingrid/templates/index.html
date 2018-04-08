@@ -1,5 +1,16 @@
+<head></head>
+
+<body>
+    <p>To rent a wetsuit, scan your member tag</p>
+    <p>To return a wetsuit, scan the wetsuit's RFID tag</p>
+
+    <form action="" method="post">{% csrf_token %}
+        {{ form.as_p }}
+    </form>
+</body>
+
 <script type="text/javascript">
-    var alwaysFocusedInput = document.getElementById( "{{ form.rfid.auto_id }}" );
+    var alwaysFocusedInput = document.forms[0].elements[0];
 
     alwaysFocusedInput.addEventListener( "blur", function() {
       setTimeout(() =>{
@@ -7,12 +18,3 @@
       }, 0);
     });
 </script>
-
-<p>To rent a wetsuit, scan your member tag</p>
-<p>To return a wetsuit, scan the wetsuit's RFID tag</p>
-
-{{ form.rfid.auto_id }}
-
-<form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
-</form>
