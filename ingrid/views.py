@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views.generic import ListView, FormView
 
 from .forms import IndexForm
-from .models import Wetsuit
+from .models import Wetsuit, Locker
 from .convinience import is_member_rfid, is_wetsuit_rfid
 
 
@@ -28,8 +28,8 @@ class IndexView(FormView):
             return reverse('index')
 
 
-class WetsuitListView(ListView):
+class LockerListView(ListView):
 
     template_name = 'checkout.html'
-    model = Wetsuit
+    model = Locker
 
