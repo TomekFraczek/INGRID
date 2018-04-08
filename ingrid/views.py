@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.urls import reverse
 from django.views.generic import ListView, FormView
 
 from .forms import IndexForm
+from .models import Wetsuit
 from .convinience import is_member_rfid, is_wetsuit_rfid
 
 
@@ -19,12 +21,15 @@ class IndexView(FormView):
 
         # TODO: make these URL's not be hardcoded
         if is_wetsuit_rfid(rfid):
-            return 'ingrid/return/'
+            return reverse('return')
         elif is_member_rfid(rfid):
-            return 'ingrid/checkout/'
+            return reverse('checkout')
         else:
-            return 'ingrid/'
+            return reverse('index')
 
 
 class WetsuitListView(ListView):
-    pass
+
+    template_name = 'checkout.html'
+    model = Wetsuit
+
