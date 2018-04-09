@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+<p>Locker {{ locker.locker_id }} opened.</p>
+<p>This locker contains a {{ locker.wetsuit.description }}</p>
+<br>
+<img src="{% static locker.wetsuit.img_path %}" width=50%>
+<br>
+<p>{% block action_to_take %}{% endblock %}</p>
+
+{% endblock %}
