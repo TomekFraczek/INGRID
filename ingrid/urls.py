@@ -7,6 +7,6 @@ from . import views
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('checkout/', views.LockerListView.as_view(), name='checkout'),
-    path('checkout/<int:locker_id>/dispense', views.DispenseView.as_view(), name='dispense'),
-    path('checkout/<int:locker_id>/return', views.DispenseView.as_view(), name='return')
+    path('checkout/<int:locker_id>/', views.DispenseView.as_view(), name='dispense'),
+    path('return/<int:locker_id>/', views.DispenseView.as_view(), name='return')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
