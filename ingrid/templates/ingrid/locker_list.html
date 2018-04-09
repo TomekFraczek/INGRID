@@ -64,7 +64,7 @@
         {% for locker in object_list %}
             <div class="col-md">
                 <div class="wrimagecard wrimagecard-topimage">
-                    <a href="{{ locker.locker_id }}">
+                    <a href="{% url 'dispense' locker.locker_id %}">
                         <div class="wrimagecard-topimage_header" style="background-color: rgba(119, 178, 88, 0.1)">
                             <center>
                                 <img src="{% static 'ingrid/placeholder_wetsuit.jpg' %}" class="img-responsive" alt="Wetsuit">
