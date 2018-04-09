@@ -1,7 +1,6 @@
-<head>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+{% extends "base.html" %}
+
+{% block extra_head %}
     <style>
 
         .horizontal_scrolled {
@@ -55,28 +54,29 @@
             transition: color 0.3s ease;
         }
     </style>
-</head>
+{% endblock %}
 
-{% load static %}
-
-<div class="container-fluid horizontal_scrolled">
-	<div class="row">
-        {% for locker in object_list %}
-            <div class="col-md">
-                <div class="wrimagecard wrimagecard-topimage">
-                    <a href="{% url 'dispense' locker_id=locker.locker_id %}">
-                        <div class="wrimagecard-topimage_header" style="background-color: rgba(119, 178, 88, 0.1)">
-                            <center>
-                                <img src="{% static 'ingrid/placeholder_wetsuit.jpg' %}" class="img-responsive" alt="Wetsuit">
-                            </center>
-                        </div>
-                        <div class="wrimagecard-topimage_title">
-                            <h4>{{ locker.wetsuit.description }}
-                            <div class="pull-right badge" id="WrControls"></div></h4>
-                        </div>
-                    </a>
+{% block body %}
+    {% load static %}
+    <div class="container-fluid horizontal_scrolled">
+        <div class="row">
+            {% for locker in object_list %}
+                <div class="col-md">
+                    <div class="wrimagecard wrimagecard-topimage">
+                        <a href="{% url 'dispense' locker_id=locker.locker_id %}">
+                            <div class="wrimagecard-topimage_header" style="background-color: rgba(119, 178, 88, 0.1)">
+                                <center>
+                                    <img src="{% static locker.wetsuit.img_path %}" class="img-responsive" alt="Wetsuit">
+                                </center>
+                            </div>
+                            <div class="wrimagecard-topimage_title">
+                                <h4>{{ locker.wetsuit.description }}
+                                <div class="pull-right badge" id="WrControls"></div></h4>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-</div>
+{% endblock %}

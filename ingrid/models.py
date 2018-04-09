@@ -14,6 +14,7 @@ class Wetsuit(models.Model):
     rfid = models.CharField(max_length=10, unique=True)
     gender = models.CharField(choices=genders, max_length=1)
     size = models.CharField(choices=sizes, max_length=4)
+    img_path = models.FilePathField(default='ingrid/placeholder_wetsuit.jpg')
 
     def __str__(self):
         return "{} {} wetsuit".format(self.size, self.gender)
