@@ -3,8 +3,16 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <style>
+
+        .horizontal_scrolled {
+            width: 400%;
+            overflow: scroll;
+            overflow-x: scroll;
+            overflow-y: hidden
+        }
+
         .wrimagecard{
-            margin-top: 0;
+            margin-top: 2rem;
             margin-bottom: 1.5rem;
             text-align: left;
             position: relative;
@@ -12,6 +20,7 @@
             box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
             border-radius: 4px;
             transition: all 0.3s ease;
+            width: 85%;
         }
         .wrimagecard .fa{
             position: relative;
@@ -22,8 +31,8 @@
         }
 
         .wrimagecard-topimage_header img {
-            width: 10rem;
-            height: 5rem;
+            width: 15rem;
+            height: 23rem;
         }
         a.wrimagecard:hover, .wrimagecard-topimage:hover {
             box-shadow: 2px 4px 8px 0px rgba(46,61,73,0.2);
@@ -50,10 +59,10 @@
 
 {% load static %}
 
-<div class="container-fluid">
+<div class="container-fluid horizontal_scrolled">
 	<div class="row">
         {% for locker in object_list %}
-            <div class="col-md-2 col-sm-3 ">
+            <div class="col-md">
                 <div class="wrimagecard wrimagecard-topimage">
                     <a href="{{ locker.locker_id }}">
                         <div class="wrimagecard-topimage_header" style="background-color: rgba(119, 178, 88, 0.1)">
