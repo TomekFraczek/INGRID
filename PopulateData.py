@@ -45,7 +45,7 @@ for i in bar(range(num_lockers)):
     wetsuit = Wetsuit(rfid=gen_rfid(), gender=choice(genders), size=choice(sizes))
     wetsuit.save()
 
-    locker_id = "L{}".format(i)
+    locker_id = i+1
     locker = Locker(locker_id=locker_id, wetsuit=wetsuit)
     locker.save()
 
