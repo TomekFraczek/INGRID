@@ -34,10 +34,12 @@ class LockerListView(ListView):
 class DispenseView(DetailView):
 
     model = Locker
+    pk_url_kwarg = 'locker_id'
     template_name = 'dispense.html'
 
 
 class ReturnView(DetailView):
 
     model = Locker
+    pk_url_kwarg = 'locker_id'
     template_name = 'return.html'

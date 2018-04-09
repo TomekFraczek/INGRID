@@ -25,7 +25,7 @@ class Wetsuit(models.Model):
 
 class Locker(models.Model):
 
-    locker_id = models.CharField(primary_key=True, max_length=5)
+    locker_id = models.IntegerField(primary_key=True)
     wetsuit = models.OneToOneField(to=Wetsuit, on_delete=models.CASCADE)
     has_suit = models.BooleanField(default=True)
 
