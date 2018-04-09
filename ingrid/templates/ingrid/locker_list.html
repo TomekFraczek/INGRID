@@ -1,98 +1,72 @@
 <head>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#list').click(function(){
-                event.preventDefault();
-                $('#products .item').addClass('list-group-item');
-            });
-            $('#grid').click(function(){
-                event.preventDefault();
-                $('#products .item').removeClass('list-group-item');
-            });
-        });
-    </script>
     <style>
-        .thumbnail
-        {
-            margin-bottom: 20px;
-            padding: 0px;
-            -webkit-border-radius: 0px;
-            -moz-border-radius: 0px;
-            border-radius: 0px;
+        .wrimagecard{
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            position: relative;
+            background: #fff;
+            box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .wrimagecard .fa{
+            position: relative;
+            font-size: 70px;
+        }
+        .wrimagecard-topimage_header{
+            padding: 20px;
         }
 
-        .item.list-group-item
-        {
-            float: none;
+        .wrimagecard-topimage_header img {
+            width: 10rem;
+            height: 5rem;
+        }
+        a.wrimagecard:hover, .wrimagecard-topimage:hover {
+            box-shadow: 2px 4px 8px 0px rgba(46,61,73,0.2);
+        }
+        .wrimagecard-topimage a {
             width: 100%;
-            background-color: #fff;
-            margin-bottom: 10px;
+            height: 100%;
+            display: block;
         }
-        .item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
-        {
-            background: #428bca;
+        .wrimagecard-topimage_title {
+            padding: 20px 24px;
+            height: 80px;
+            padding-bottom: 0.75rem;
+            position: relative;
         }
-
-        .item.list-group-item .list-group-image
-        {
-            margin-right: 10px;
+        .wrimagecard-topimage a {
+            border-bottom: none;
+            text-decoration: none;
+            color: #525c65;
+            transition: color 0.3s ease;
         }
-        .item.list-group-item .thumbnail
-        {
-            margin-bottom: 0px;
-        }
-        .item.list-group-item .caption
-        {
-            padding: 9px 9px 0px 9px;
-        }
-        .item.list-group-item:nth-of-type(odd)
-        {
-            background: #eeeeee;
-        }
-
-        .item.list-group-item:before, .item.list-group-item:after
-        {
-            display: table;
-            content: " ";
-        }
-
-        .item.list-group-item img
-        {
-            float: left;
-        }
-        .item.list-group-item:after
-        {
-            clear: both;
-        }
-        .list-group-item-text
-        {
-            margin: 0 0 11px;
-        }
-
     </style>
 </head>
 
 
-<div class="container">
-    {% for locker in object_list %}
-        <div id="products" class="row list-group">
-            <div class="item  col-xs-4 col-lg-4">
-                <div class="thumbnail">
-                    <img class="group list-group-image" src="{{ locker.wetsuit.image_file_path }}" alt="" />
-                    <div class="caption">
-                        <h4 class="group inner list-group-item-heading">
-                            {{ wetsuit.description }}</h4>
-                        <div class="row">
-                            <div class="col-xs-12 col-md-6">
-                                <a class="btn btn-success" href="{{ locker.checkout_url }}">Select</a>
-                            </div>
+<div class="container-fluid">
+	<div class="row">
+        {% for locker in object_list %}
+            <div class="col-md-2 col-sm-3 ">
+                <div class="wrimagecard wrimagecard-topimage">
+                    <a href="{{ locker.locker_id }}">
+                        <div class="wrimagecard-topimage_header" style="background-color: rgba(119, 178, 88, 0.1)">
+                            <center>
+                                <img src="http://www.serpro.gov.br/++resource++serpro.portalserprotema/img/logo-serpro.png" class="img-responsive">
+                            </center>
                         </div>
-                    </div>
+                        <div class="wrimagecard-topimage_title">
+                            <h4>{{ locker.wetsuit.description }}
+                            <div class="pull-right badge" id="WrControls"></div></h4>
+                        </div>
+                    </a>
                 </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>
