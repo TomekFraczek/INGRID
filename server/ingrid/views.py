@@ -3,7 +3,6 @@ from django.views.generic import ListView, FormView, DetailView, RedirectView
 
 from .forms import IndexForm
 from .models import Locker
-from .control import doors_open
 from .convinience import is_member_rfid, is_wetsuit_rfid
 
 
@@ -52,6 +51,11 @@ class ReturnView(DetailView):
     model = Locker
     pk_url_kwarg = 'locker_id'
     template_name = 'return.html'
+
+    def get(self, request, *args, **kwargs):
+        Locker.should_have_suit = True
+        Locker.lock.open()
+        return super(ReturnView, self).get(request, *args, **kwargs)
 
 
 class CloseDoorView(RedirectView):
