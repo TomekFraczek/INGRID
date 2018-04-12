@@ -1,9 +1,15 @@
+import os
+
+from json import load
+from playsound import playsound
 from django.urls import reverse
 from django.views.generic import ListView, FormView, DetailView, RedirectView
 
 from .forms import IndexForm
 from .models import Locker
 from .convinience import is_member_rfid, is_wetsuit_rfid
+
+settings = load(os.path.join(os.getcwd(), 'ingrid', 'static', 'config.json'))
 
 
 class IndexView(FormView):
@@ -72,6 +78,7 @@ class CloseDoorView(RedirectView):
 
             # If a locker is missing a suit, demand it back
             if locker.should_have_suit and not locker.has_suit:
+                playsound(settings['audio']['return wetsuit'])
                 redirect_url = reverse('return', kwargs={'locker_id': locker.locker_id})
 
             # If a locker unexpectedly has a suit, set the expected status to have_suit

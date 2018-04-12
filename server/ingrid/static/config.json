@@ -8,5 +8,8 @@
   },
   "timing": {
     "lock open": 2
+  },
+  "audio": {
+    "return wetsuit": "ingrid/static/audio/returnWetsuit.mp3"
   }
 }
