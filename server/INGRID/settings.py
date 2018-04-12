@@ -121,3 +121,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = '/home/tomek/Work/Excursion/INGRID/code/INGRID/ingrid/static/'
 
+

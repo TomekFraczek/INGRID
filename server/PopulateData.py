@@ -1,15 +1,15 @@
 import os
+from random import choice
+from random import randint
+
 import django
 import progressbar
-
-from random import randint
-from random import choice
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'INGRID.settings')
 django.setup()
 
 from django.contrib.auth.models import User
-from ingrid.models import Locker, Wetsuit
+from server.ingrid.models import Locker, Wetsuit
 
 ADMIN_RFID = '0000000000'
 SYSTEM_RFID = '1111111111'

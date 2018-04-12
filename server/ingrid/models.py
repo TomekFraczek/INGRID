@@ -1,6 +1,6 @@
 from django.db import models
 
-from .control import HangerSensor, Lock
+# from .control import HangerSensor, Lock
 
 # Create your models here.
 
@@ -31,9 +31,9 @@ class Locker(models.Model):
     locker_id = models.IntegerField(primary_key=True)
     wetsuit = models.OneToOneField(to=Wetsuit, on_delete=models.CASCADE)
 
-    lock = Lock(locker_id)
-    hanger_sensor = HangerSensor(locker_id)
+    # lock = Lock(locker_id)
+    # hanger_sensor = HangerSensor(locker_id)
 
-    @property
-    def has_suit(self):
-        return self.hanger_sensor.is_active
+    #@property
+    #def has_suit(self):
+    #    return self.hanger_sensor.is_active
