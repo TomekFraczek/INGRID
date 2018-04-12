@@ -18,18 +18,18 @@ close_door_sound_path = os.path.join(os.getcwd(), audio_settings['close door sou
 def handle_open_doors():
 
     opened_at = datetime.now()
+    time_allowed_open = time_settings['door open patience']
 
-    while True:
+    # Keep looping until all doors are closed
+    while not doors_open.is_active:
 
-        # If the doors have been closed, then break out of this loop
-        if doors_open.is_active:
-            webbrowser.open(settings['door close url'])
-            break
-
-        # If the door has been open too long yell to close it
         time_open = datetime.now() - opened_at
-        time_allowed_open = time_settings['door open patience']
+
+        # If the door has been open too long, yell to close it
         if time_open.total_seconds() > time_allowed_open:
             playsound(close_door_sound_path)
             time.sleep(time_settings['wait between yells'])
             continue
+
+    # Tell the server to check that all expected wetsuits are present
+    webbrowser.open(settings['door close url'])
