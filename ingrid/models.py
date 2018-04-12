@@ -30,8 +30,10 @@ class Locker(models.Model):
 
     locker_id = models.IntegerField(primary_key=True)
     wetsuit = models.OneToOneField(to=Wetsuit, on_delete=models.CASCADE)
-    has_suit = models.BooleanField(default=True)
 
     lock = Lock(locker_id)
     hanger_sensor = HangerSensor(locker_id)
 
+    @property
+    def has_suit(self):
+        return self.hanger_sensor.is_active
