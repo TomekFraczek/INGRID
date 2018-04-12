@@ -15,13 +15,14 @@ class Wetsuit(models.Model):
     gender = models.CharField(choices=genders, max_length=1)
     size = models.CharField(choices=sizes, max_length=4)
     img_path = models.FilePathField(default='ingrid/placeholder_wetsuit.jpg')
+    date_added = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return "{} {} wetsuit".format(self.size, self.gender)
+        return "{} {} wetsuit ({})".format(self.get_gender_display(), self.size, self.date_added)
 
     @property
     def description(self):
-        return str(self)
+        return "{} {} wetsuit".format(self.get_gender_display(), self.size)
 
 
 class Locker(models.Model):
