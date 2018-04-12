@@ -1,0 +1,18 @@
+{
+  "index url": "http://127.0.0.1:8000/ingrid",
+  "GPIO Pins": {
+    "door open pin": 0,
+    "num locks": 1,
+    "lock start pin": 1,
+    "num hangers": 1,
+    "hanger start pin": 23
+  },
+  "timing": {
+    "lock open": 2,
+    "doors open patience": 30,
+    "wait between yells": 3
+  },
+  "audio": {
+    "close door sound": "client/audio/closedoor.mp3"
+  }
+}
