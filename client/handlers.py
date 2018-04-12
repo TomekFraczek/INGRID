@@ -1,5 +1,6 @@
 import os
 import time
+import webbrowser
 
 from json import load
 from datetime import datetime
@@ -22,6 +23,7 @@ def handle_open_doors():
 
         # If the doors have been closed, then break out of this loop
         if doors_open.is_active:
+            webbrowser.open(settings['door close url'])
             break
 
         # If the door has been open too long yell to close it
@@ -31,10 +33,3 @@ def handle_open_doors():
             playsound(close_door_sound_path)
             time.sleep(time_settings['wait between yells'])
             continue
-
-
-
-
-
-
-

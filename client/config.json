@@ -1,5 +1,6 @@
 {
   "index url": "http://127.0.0.1:8000/ingrid",
+  "door close url": "http://127.0.0.1:8000/ingrid/closing_doors",
   "GPIO Pins": {
     "door open pin": 0,
     "num locks": 1,
