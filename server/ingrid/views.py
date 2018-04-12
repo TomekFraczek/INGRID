@@ -22,7 +22,6 @@ class IndexView(FormView):
         form = self.get_form()
         rfid = form.data['rfid']
 
-        # TODO: make these URL's not be hardcoded
         if is_wetsuit_rfid(rfid):
             return reverse('return')
         elif is_member_rfid(rfid):
@@ -36,6 +35,9 @@ class LockerListView(ListView):
 
     template_name = 'checkout.html'
     model = Locker
+
+    def get_queryset(self):
+        return Locker.objects.filter(has_suit=True)
 
 
 class DispenseView(DetailView):
