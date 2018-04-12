@@ -1,9 +1,12 @@
 {
-  "gpio pins": {
+  "GPIO Pins": {
     "door open pin": 0,
     "num locks": 1,
     "lock start pin": 1,
     "num hangers": 1,
     "hanger start pin": 23
+  },
+  "timing": {
+    "lock open": 2
   }
 }
