@@ -1,8 +1,6 @@
 from django.db import models
 
-# from .control import HangerSensor, Lock
-
-# Create your models here.
+from .control import HangerSensor, Lock
 
 
 class Wetsuit(models.Model):
@@ -34,9 +32,9 @@ class Locker(models.Model):
     #: Field to keep track of the expected value of has_suit
     should_have_suit = models.BooleanField(default=True)
 
-    # lock = Lock(locker_id)
-    # hanger_sensor = HangerSensor(locker_id)
+    lock = Lock(locker_id)
+    hanger_sensor = HangerSensor(locker_id)
 
-    #@property
-    #def has_suit(self):
-    #    return self.hanger_sensor.is_active
+    @property
+    def has_suit(self):
+        return self.hanger_sensor.is_active

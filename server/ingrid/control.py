@@ -11,7 +11,7 @@ time_settings = settings['timing']
 
 
 #: sensor that detects if any of the doors are open
-# doors_open = Button(gpio_settings['door open pin'])
+doors_open = Button(gpio_settings['door open pin'])
 
 
 class Lock(OutputDevice):
