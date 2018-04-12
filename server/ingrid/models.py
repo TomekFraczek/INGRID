@@ -31,6 +31,9 @@ class Locker(models.Model):
     locker_id = models.IntegerField(primary_key=True)
     wetsuit = models.OneToOneField(to=Wetsuit, on_delete=models.CASCADE)
 
+    #: Field to keep track of the expected value of has_suit
+    should_have_suit = models.BooleanField(default=True)
+
     # lock = Lock(locker_id)
     # hanger_sensor = HangerSensor(locker_id)
 
