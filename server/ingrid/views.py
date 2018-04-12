@@ -9,7 +9,11 @@ from .forms import IndexForm
 from .models import Locker
 from .convinience import is_member_rfid, is_wetsuit_rfid
 
+
+NO_ACTIVE_LOCKER = -1
+
 settings = load(os.path.join(os.getcwd(), 'ingrid', 'static', 'config.json'))
+active_locker = NO_ACTIVE_LOCKER
 
 
 class IndexView(FormView):
@@ -48,6 +52,8 @@ class DispenseView(DetailView):
     template_name = 'dispense.html'
 
     def get(self, request, *args, **kwargs):
+        global active_locker
+        active_locker = Locker.locker_id
         Locker.should_have_suit = False
         Locker.lock.open()
         return super(DispenseView, self).get(request, *args, **kwargs)
@@ -61,6 +67,8 @@ class ReturnView(DetailView):
     template_name = 'return.html'
 
     def get(self, request, *args, **kwargs):
+        global active_locker
+        active_locker = Locker.locker_id
         Locker.should_have_suit = True
         Locker.lock.open()
         return super(ReturnView, self).get(request, *args, **kwargs)
@@ -76,16 +84,20 @@ class CloseDoorView(RedirectView):
 
         redirect_url = reverse('index')
 
-        for locker in Locker.objects.all():
+        locker = Locker.objects.get(locker_id=active_locker)
 
-            # If a locker is missing a suit, demand it back
-            if locker.should_have_suit and not locker.has_suit:
-                playsound(settings['audio']['return wetsuit'])
-                redirect_url = reverse('return', kwargs={'locker_id': locker.locker_id})
+        # If a locker is missing a suit, demand it back
+        if locker.should_have_suit and not locker.has_suit:
+            playsound(settings['audio']['return wetsuit'])
+            redirect_url = reverse('return', kwargs={'locker_id': locker.locker_id})
 
-            # If a locker unexpectedly has a suit, set the expected status to have_suit
-            if not locker.should_have_suit and locker.has_suit:
-                locker.should_have_suit = True
+        # If a locker unexpectedly has a suit, set the expected status to have_suit
+        if not locker.should_have_suit and locker.has_suit:
+            locker.should_have_suit = True
+
+        # Clear the active locker before returning (with be set back if a locker becomes active)
+        global active_locker
+        active_locker = NO_ACTIVE_LOCKER
 
         return redirect_url
 
