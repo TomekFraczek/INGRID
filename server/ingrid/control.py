@@ -4,7 +4,7 @@ from time import sleep
 import os
 
 # Load the GPIO pin settings from the settings file.
-settings_file = os.path.join(os.getcwd(), 'ingrid', 'static', 'config.json')
+settings_file = open(os.path.join(os.getcwd(), 'ingrid', 'static', 'config.json'))
 settings = load(settings_file)
 gpio_settings = settings['GPIO Pins']
 time_settings = settings['timing']
@@ -17,6 +17,7 @@ doors_open = Button(gpio_settings['door open pin'])
 class Lock(OutputDevice):
 
     def __init__(self, locker_num):
+        locker_int = get
         pin = locker_num + gpio_settings["lock start pin"]
         super(Lock, self).__init__(pin)
 

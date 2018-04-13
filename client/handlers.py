@@ -8,7 +8,7 @@ from playsound import playsound
 from client.control import doors_open, HangerSensor
 
 
-settings = load(os.path.join(os.getcwd(), 'config.json'))
+settings = load(open(os.path.join(os.getcwd(), 'config.json')))
 audio_settings = settings['audio']
 time_settings = settings['timing']
 
