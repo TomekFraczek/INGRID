@@ -16,7 +16,7 @@ webbrowser.open(settings['index url'])
 # Main client loop, keeps the program running indefinitely
 while True:
 
-    if doors_open:
+    if not doors_open.is_active:
         handle_open_doors()
 
 
