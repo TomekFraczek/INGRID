@@ -3,11 +3,11 @@ import webbrowser
 
 from json import load
 
-from client.control import HangerSensor, doors_open
+from client.control import doors_open
 from client.handlers import handle_open_doors
 
 
-settings = load(os.path.join(os.getcwd(), 'config.json'))
+settings = load(open(os.path.join(os.getcwd(), 'config.json')))
 
 
 webbrowser.open(settings['index url'])
