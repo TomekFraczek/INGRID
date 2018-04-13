@@ -119,6 +119,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/tomek/Work/Excursion/INGRID/code/INGRID/ingrid/static/'
+STATIC_ROOT = '/home/tomek/Work/Excursion/INGRID/code/INGRID/server/INGRID/ingrid/static/'
 
 
