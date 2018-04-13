@@ -41,7 +41,7 @@ class LockerListView(ListView):
     model = Locker
 
     def get_queryset(self):
-        return Locker.objects.filter(has_suit=True)
+        return Locker.objects.filter(should_have_suit=True)
 
 
 class DispenseView(DetailView):
