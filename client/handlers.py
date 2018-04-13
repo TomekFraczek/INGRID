@@ -23,7 +23,7 @@ def handle_open_doors():
     # Keep looping until all doors are closed
     while not doors_open.is_active:
 
-        # print("doors active: {}".format(doors_open.is_active))
+        print("doors active: {}".format(doors_open.is_active))
 
         time_open = datetime.now() - opened_at
 
