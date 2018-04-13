@@ -9,6 +9,7 @@
     "hanger start pin": 23
   },
   "timing": {
+    "door check interval": 0.25,
     "lock open": 2,
     "doors open patience": 30,
     "wait between yells": 3

@@ -5,7 +5,7 @@ import webbrowser
 from json import load
 from datetime import datetime
 from playsound import playsound
-from client.control import doors_open, HangerSensor
+from client.control import doors_open
 
 
 settings = load(open(os.path.join(os.getcwd(), 'config.json')))
@@ -18,10 +18,12 @@ close_door_sound_path = os.path.join(os.getcwd(), audio_settings['close door sou
 def handle_open_doors():
 
     opened_at = datetime.now()
-    time_allowed_open = time_settings['door open patience']
+    time_allowed_open = time_settings['doors open patience']
 
     # Keep looping until all doors are closed
     while not doors_open.is_active:
+
+        # print("doors active: {}".format(doors_open.is_active))
 
         time_open = datetime.now() - opened_at
 
@@ -30,6 +32,8 @@ def handle_open_doors():
             playsound(close_door_sound_path)
             time.sleep(time_settings['wait between yells'])
             continue
+
+        time.sleep(time_settings['door check interval'])
 
     # Tell the server to check that all expected wetsuits are present
     webbrowser.open(settings['door close url'])

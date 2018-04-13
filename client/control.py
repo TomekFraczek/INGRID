@@ -1,10 +1,9 @@
-from gpiozero import OutputDevice, Button
+from gpiozero import Button
 from json import load
-from time import sleep
 import os
 
 # Load the GPIO pin settings from the settings file.
-settings_file = open(os.path.join(os.getcwd(), 'ingrid', 'static', 'config.json'))
+settings_file = open(os.path.join(os.getcwd(), 'config.json'))
 settings = load(settings_file)
 gpio_settings = settings['GPIO Pins']
 
