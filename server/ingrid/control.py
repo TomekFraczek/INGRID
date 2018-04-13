@@ -9,15 +9,9 @@ settings = load(settings_file)
 gpio_settings = settings['GPIO Pins']
 time_settings = settings['timing']
 
-
-#: sensor that detects if any of the doors are open
-doors_open = Button(gpio_settings['door open pin'])
-
-
 class Lock(OutputDevice):
 
     def __init__(self, locker_num):
-        locker_int = get
         pin = locker_num + gpio_settings["lock start pin"]
         super(Lock, self).__init__(pin)
 
