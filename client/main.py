@@ -19,10 +19,7 @@ webbrowser.open(settings['index url'])
 while True:
 
     time.sleep(time_settings['door check interval'])
-    # print("Door state in main loop: {}".format(doors_open.is_active))
+    print("Door state in main loop: {}".format(doors_open.is_active))
 
     if not doors_open.is_active:
         handle_open_doors()
-
-
-
