@@ -33,8 +33,14 @@ class Locker(models.Model):
     #: Field to keep track of the expected value of has_suit
     should_have_suit = models.BooleanField(default=True)
 
-    lock = Lock(locker_id)
-    hanger_sensor = HangerSensor(locker_id)
+    def __init__(self, *args, **kwargs):
+        super(Locker, self).__init__(*args, **kwargs)
+        self.lock = Lock(self.get_locker_int())
+        self.hanger_sensor = HangerSensor(self.get_locker_int())
+
+    def get_locker_int(self):
+        """Method to allow django to handle the field -> int conversion"""
+        return getattr(self, "locker_id")
 
     @property
     def has_suit(self):
