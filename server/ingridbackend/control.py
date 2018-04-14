@@ -11,7 +11,6 @@ time_settings = settings['timing']
 
 
 class Lock(OutputDevice):
-
     def __init__(self, locker_num):
         pin = locker_num + gpio_settings["lock start pin"]
         super(Lock, self).__init__(pin)
@@ -23,9 +22,6 @@ class Lock(OutputDevice):
 
 
 class HangerSensor(Button):
-
     def __init__(self, locker_num):
         pin = locker_num + gpio_settings["hanger start pin"]
         super(HangerSensor, self).__init__(pin)
-
-

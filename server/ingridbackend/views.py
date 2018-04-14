@@ -1,14 +1,13 @@
 import os
 
-from json import load
-from playsound import playsound
 from django.urls import reverse
 from django.views.generic import ListView, FormView, DetailView, RedirectView
+from json import load
+from playsound import playsound
 
+from .convinience import is_member_rfid, is_wetsuit_rfid
 from .forms import IndexForm
 from .models import Locker
-from .convinience import is_member_rfid, is_wetsuit_rfid
-
 
 NO_ACTIVE_LOCKER = -1
 
@@ -100,8 +99,3 @@ class CloseDoorView(RedirectView):
         active_locker = NO_ACTIVE_LOCKER
 
         return redirect_url
-
-
-
-
-
