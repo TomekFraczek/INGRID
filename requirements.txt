@@ -1,2 +1,7 @@
-django==2.0.1
+Django==2.0.1
+pigpio==1.40.post1
+playsound==1.2.2
 progressbar2==3.34.3
+python-utils==2.3.0
+pytz==2018.4
+six==1.11.0
