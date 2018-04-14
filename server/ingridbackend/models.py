@@ -14,7 +14,7 @@ class Wetsuit(models.Model):
     rfid = models.CharField(max_length=10, unique=True)
     gender = models.CharField(choices=genders, max_length=1)
     size = models.CharField(choices=sizes, max_length=4)
-    img_path = models.FilePathField(default='ingrid/placeholder_wetsuit.jpg')
+    img_path = models.FilePathField(default='ingridbackend/placeholder_wetsuit.jpg')
     date_added = models.DateField(auto_now_add=True)
 
     def __str__(self):

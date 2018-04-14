@@ -4,7 +4,7 @@ from time import sleep
 import os
 
 # Load the GPIO pin settings from the settings file.
-settings_file = open(os.path.join(os.getcwd(), 'ingrid', 'static', 'config.json'))
+settings_file = open(os.path.join(os.getcwd(), 'ingridbackend', 'static', 'config.json'))
 settings = load(settings_file)
 gpio_settings = settings['GPIO Pins']
 time_settings = settings['timing']

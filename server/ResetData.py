@@ -10,7 +10,7 @@ import django
 
 # Prepares the necessary paths
 basepath = os.getcwd()
-migrations_path = os.path.join(basepath, 'ingrid', 'migrations')
+migrations_path = os.path.join(basepath, 'ingridbackend', 'migrations')
 
 
 # Prepares python to be able to run django commands
@@ -35,5 +35,5 @@ open(os.path.join(migrations_path, '__init__.py'), 'w')
 
 # Re-initializes the database
 from django.core.management import call_command
-call_command('makemigrations', 'ingrid')
+call_command('makemigrations', 'ingridbackend')
 call_command('migrate')

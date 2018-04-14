@@ -12,7 +12,7 @@ from .convinience import is_member_rfid, is_wetsuit_rfid
 
 NO_ACTIVE_LOCKER = -1
 
-settings = load(open(os.path.join(os.getcwd(), 'ingrid', 'static', 'config.json')))
+settings = load(open(os.path.join(os.getcwd(), 'ingridbackend', 'static', 'config.json')))
 active_locker = NO_ACTIVE_LOCKER
 
 
