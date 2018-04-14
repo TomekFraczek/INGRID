@@ -9,7 +9,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'INGRID.settings')
 django.setup()
 
 from django.contrib.auth.models import User
-from server.ingrid.models import Locker, Wetsuit
+from .ingrid.models import Locker, Wetsuit
 
 ADMIN_RFID = '0000000000'
 SYSTEM_RFID = '1111111111'

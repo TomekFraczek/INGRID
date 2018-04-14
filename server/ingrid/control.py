@@ -9,6 +9,7 @@ settings = load(settings_file)
 gpio_settings = settings['GPIO Pins']
 time_settings = settings['timing']
 
+
 class Lock(OutputDevice):
 
     def __init__(self, locker_num):
