@@ -1,10 +1,13 @@
 #!/usr/bin/env python
 
 import os
+import sys
 import time
 import webbrowser
 
 from json import load
+
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 from client.control import doors_open
 from client.handlers import handle_open_doors
