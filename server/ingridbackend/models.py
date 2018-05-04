@@ -24,6 +24,11 @@ class Wetsuit(models.Model):
     def description(self):
         return "{} {} wetsuit".format(self.get_gender_display(), self.size)
 
+    def get_gender_display(self):
+        for gender_option in self.genders:
+            if gender_option[0] == self.gender:
+                return gender_option[1]
+
 
 class Locker(models.Model):
 
