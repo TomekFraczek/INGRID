@@ -4,7 +4,6 @@ from .control import HangerSensor, Lock
 
 
 class Wetsuit(models.Model):
-
     genders = (("M", "Mens"),
                ("W", "Womens"),
                ("U", "Unisex"))
@@ -31,7 +30,6 @@ class Wetsuit(models.Model):
 
 
 class Locker(models.Model):
-
     locker_id = models.IntegerField(primary_key=True)
     wetsuit = models.OneToOneField(to=Wetsuit, on_delete=models.CASCADE)
 
@@ -42,7 +40,6 @@ class Locker(models.Model):
         self.lock = Lock(self.locker_id)
         self.hanger_sensor = HangerSensor(self.locker_id)
         super(Locker, self).__init__(*args, **kwargs)
-
 
     def get_locker_int(self):
         """Method to allow django to handle the field -> int conversion"""

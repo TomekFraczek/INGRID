@@ -2,21 +2,17 @@
 This script removes all traces of the old database and sets up a new one, so that the server can be run clean
 """
 
-
 import os
 import shutil
 import django
-
 
 # Prepares the necessary paths
 basepath = os.getcwd()
 migrations_path = os.path.join(basepath, 'ingridbackend', 'migrations')
 
-
 # Prepares python to be able to run django commands
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "INGRID.settings")
 django.setup()
-
 
 # Removes all the migration files and the entire database
 try:
@@ -32,8 +28,8 @@ except FileNotFoundError:
 os.mkdir(migrations_path)
 open(os.path.join(migrations_path, '__init__.py'), 'w')
 
-
 # Re-initializes the database
 from django.core.management import call_command
+
 call_command('makemigrations', 'ingridbackend')
 call_command('migrate')
