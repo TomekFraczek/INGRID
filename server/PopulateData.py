@@ -1,15 +1,14 @@
-import os
-from random import choice
-from random import randint
-
 import django
+import os
 import progressbar
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'INGRID.settings')
-django.setup()
+from random import choice, randint
 
 from django.contrib.auth.models import User
 from .ingridbackend.models import Locker, Wetsuit
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'INGRID.settings')
+django.setup()
 
 ADMIN_RFID = '0000000000'
 SYSTEM_RFID = '1111111111'
@@ -45,7 +44,7 @@ for i in bar(range(num_lockers)):
     wetsuit = Wetsuit(rfid=gen_rfid(), gender=choice(genders), size=choice(sizes))
     wetsuit.save()
 
-    locker_id = i+1
+    locker_id = i + 1
     locker = Locker(locker_id=locker_id, wetsuit=wetsuit)
     locker.save()
 

@@ -7,7 +7,6 @@ from datetime import datetime
 from playsound import playsound
 from client.control import doors_open
 
-
 settings = load(open(os.path.join(os.getcwd(), 'config.json')))
 audio_settings = settings['audio']
 time_settings = settings['timing']
@@ -16,7 +15,6 @@ close_door_sound_path = os.path.join(os.getcwd(), audio_settings['close door sou
 
 
 def handle_open_doors():
-
     opened_at = datetime.now()
     time_allowed_open = time_settings['doors open patience']
 
