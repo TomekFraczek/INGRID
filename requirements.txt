@@ -1,4 +1,4 @@
-Django==2.0.1
+Django==2.0.6
 gpiozero==1.4.1
 pigpio==1.40.post1
 playsound==1.2.2
