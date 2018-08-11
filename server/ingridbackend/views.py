@@ -12,7 +12,7 @@ from .models import Locker
 NO_ACTIVE_LOCKER = -1
 
 settings = load(open(os.path.join(os.getcwd(), 'ingridbackend', 'static', 'config.json')))
-active_locker = NO_ACTIVE_LOCKER
+globals()['active_locker'] = NO_ACTIVE_LOCKER
 
 
 class IndexView(FormView):
@@ -51,8 +51,7 @@ class DispenseView(DetailView):
     template_name = 'dispense.html'
 
     def get(self, request, *args, **kwargs):
-        global active_locker
-        active_locker = Locker.locker_id
+        globals()['active_locker'] = Locker.locker_id
         Locker.should_have_suit = False
         Locker.lock.open()
         return super(DispenseView, self).get(request, *args, **kwargs)
@@ -82,8 +81,7 @@ class CloseDoorView(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
 
         redirect_url = reverse('index')
-
-        locker = Locker.objects.get(locker_id=active_locker)
+        locker = Locker.objects.get(locker_id=globals()['active_locker'])
 
         # If a locker is missing a suit, demand it back
         if locker.should_have_suit and not locker.has_suit:
@@ -95,7 +93,6 @@ class CloseDoorView(RedirectView):
             locker.should_have_suit = True
 
         # Clear the active locker before returning (with be set back if a locker becomes active)
-        global active_locker
-        active_locker = NO_ACTIVE_LOCKER
+        globals()['active_locker'] = NO_ACTIVE_LOCKER
 
         return redirect_url
