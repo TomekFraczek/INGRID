@@ -11,7 +11,7 @@ from .models import Locker
 
 NO_ACTIVE_LOCKER = -1
 
-settings = load(open(os.path.join(os.getcwd(), 'ingridbackend', 'static', 'config.json')))
+settings = load(open(os.path.join(os.getcwd(), 'backend', 'static', 'config.json')))
 globals()['active_locker'] = NO_ACTIVE_LOCKER
 
 
