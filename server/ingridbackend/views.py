@@ -87,7 +87,7 @@ class CloseDoorView(RedirectView):
 
         # If a locker is missing a suit, demand it back
         if locker.should_have_suit and not locker.has_suit:
-            playsound(settings['audio']['return wetsuit'])
+            # playsound(settings['audio']['return wetsuit'])
             redirect_url = reverse('return', kwargs={'locker_id': locker.locker_id})
 
         # If a locker unexpectedly has a suit, set the expected status to have_suit

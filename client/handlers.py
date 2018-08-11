@@ -27,7 +27,7 @@ def handle_open_doors():
 
         # If the door has been open too long, yell to close it
         if time_open.total_seconds() > time_allowed_open:
-            playsound(close_door_sound_path)
+            # playsound(close_door_sound_path)
             time.sleep(time_settings['wait between yells'])
             continue
 
