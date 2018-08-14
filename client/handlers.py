@@ -4,14 +4,14 @@ import webbrowser
 
 from json import load
 from datetime import datetime
-from playsound import playsound
+# from playsound import playsound
 from client.control import doors_open
 
 settings = load(open(os.path.join(os.getcwd(), 'config.json')))
-audio_settings = settings['audio']
+# audio_settings = settings['audio']
 time_settings = settings['timing']
 
-close_door_sound_path = os.path.join(os.getcwd(), audio_settings['close door sound'])
+# close_door_sound_path = os.path.join(os.getcwd(), audio_settings['close door sound'])
 
 
 def handle_open_doors():
@@ -24,6 +24,7 @@ def handle_open_doors():
         print("doors active: {}".format(doors_open.is_active))
 
         time_open = datetime.now() - opened_at
+        time.sleep(time_settings['door check interval'])
 
         # If the door has been open too long, yell to close it
         if time_open.total_seconds() > time_allowed_open:
